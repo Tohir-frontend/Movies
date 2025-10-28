@@ -1,0 +1,359 @@
+/* Custom styles for Movies Catalog */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Sticky sidebar */
+.col-4 {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+h1 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+/* Search form styling */
+.form-control, .form-select {
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Search button */
+#btn {
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+#btn:hover {
+    background-color: #0056b3;
+}
+
+/* Bookmarked movies section */
+.list-group-item {
+    border: 1px solid #e9ecef;
+    border-radius: 6px !important;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Movie cards */
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: white;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 250px !important;
+    object-fit: cover;
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Star ratings */
+.text-warning {
+    color: #ffc107 !important;
+}
+
+/* Button styling */
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 4px;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Alert styling */
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+    border-radius: 6px;
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: #007bff;
+    border-color: #dee2e6;
+    border-radius: 4px;
+    margin: 0 2px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+/* Sticky pagination */
+nav[aria-label="Movie pagination"] {
+    position: sticky;
+    bottom: 20px;
+    background-color: rgba(248, 249, 250, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .col-4, .col-8 {
+        padding: 0 10px;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Gap utility for button groups */
+.gap-2 {
+    gap: 0.5rem;
+}
+
+/* Calendar icon styling */
+.bi {
+    flex-shrink: 0;
+}
+
+/* Streaming modal styles */
+#streaming-modal {
+    backdrop-filter: blur(5px);
+}
+
+#streaming-modal video {
+    background: #000;
+    border-radius: 8px;
+}
+
+#streaming-modal button:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+/* Streaming options buttons */
+#streaming-options button {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#streaming-options button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Video container loading animation */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.loading-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Enhanced streaming modal styles */
+#streaming-modal .loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+#streaming-modal .connection-indicator {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Diagnostic modal styles */
+#diagnostic-modal {
+    backdrop-filter: blur(8px);
+}
+
+#diagnostic-modal .loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Availability modal styles */
+#availability-modal {
+    backdrop-filter: blur(5px);
+}
+
+#availability-modal a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+}
+
+/* Enhanced button hover effects */
+button:hover {
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+
+/* Improved streaming options */
+#streaming-options button:hover {
+    background: #218838 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Connection quality indicator */
+.connection-quality {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    color: white;
+}
+
+.connection-quality.good { color: #28a745; }
+.connection-quality.fair { color: #ffc107; }
+.connection-quality.poor { color: #dc3545; }
+
+/* Responsive streaming modal */
+@media (max-width: 768px) {
+    #streaming-modal > div {
+        width: 95% !important;
+        max-width: none !important;
+        margin: 10px;
+    }
+    
+    #video-container {
+        height: 250px !important;
+    }
+    
+    #streaming-options button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    #diagnostic-modal > div,
+    #availability-modal > div {
+        width: 95% !important;
+        max-width: none !important;
+        margin: 10px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* Enhanced error states */
+.streaming-error {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 100%);
+    border: 1px solid #dc3545;
+}
+
+.streaming-success {
+    background: linear-gradient(135deg, #1a1a1a 0%, #1b2d1b 100%);
+    border: 1px solid #28a745;
+}
+
+/* Loading states */
+.loading-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #1b1b2d 100%);
+    border: 1px solid #007bff;
+}
+
+/* Improved tooltips */
+[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+}
