@@ -284,7 +284,9 @@ function filterMoviesBySize(movies, sizeFilter) {
     return movies.filter(movie => {
         const sizeInGB = getMovieSizeInGB(movie);
         switch (sizeFilter) {
-            case 'small': return sizeInGB < 1;
+            case 'tiny': return sizeInGB < 0.25; // < 256MB
+            case 'mini': return sizeInGB >= 0.25 && sizeInGB < 0.5; // 256-512MB
+            case 'small': return sizeInGB >= 0.5 && sizeInGB < 1; // 512MB-1GB
             case 'medium': return sizeInGB >= 1 && sizeInGB < 2;
             case 'large': return sizeInGB >= 2 && sizeInGB < 4;
             case 'xlarge': return sizeInGB >= 4;
@@ -372,6 +374,11 @@ function watchMovie(movie) {
             </button>
         </div>
         
+        <div style="display: flex; align-items: center; margin-bottom: 15px; padding: 10px; background: rgba(40, 167, 69, 0.1); border-radius: 6px; border-left: 4px solid #28a745;">
+            <span style="color: #28a745; margin-right: 8px;">🎬</span>
+            <span style="color: #ccc; font-size: 14px;">Powered by <strong style="color: #28a745;">2Embed</strong> - Premium streaming service</span>
+        </div>
+        
         <div class="video-container" id="video-container">
             <div class="loading-center">
                 <div style="margin-bottom: 20px;">
@@ -383,11 +390,11 @@ function watchMovie(movie) {
                 <div id="streaming-options">
                     ${movie.torrents ? movie.torrents.map(torrent => `
                         <button class="streaming-button" onclick="startStreaming('${movie.title}', '${torrent.quality}', '${movie.imdb_code}')">
-                            Stream ${torrent.quality}
+                            🎬 Stream ${torrent.quality} via 2Embed
                         </button>
                     `).join('') : `
                         <button class="streaming-button" onclick="startStreaming('${movie.title}', 'HD', '${movie.imdb_code}')">
-                            Stream Movie
+                            🎬 Stream Movie via 2Embed
                         </button>
                     `}
                 </div>
@@ -417,13 +424,13 @@ function startStreaming(title, quality, imdbCode) {
         <div class="loading-center">
             <div class="spinner"></div>
             <p>Loading movie player...</p>
-            <p style="font-size: 12px; color: #ccc;">Trying multiple streaming services...</p>
+            <p style="font-size: 12px; color: #ccc;">Connecting to 2Embed streaming service...</p>
         </div>
     `;
     
     const services = [
-        `https://vidsrc.to/embed/movie/${imdbCode}`,
         `https://www.2embed.to/embed/imdb/movie?id=${imdbCode}`,
+        `https://vidsrc.to/embed/movie/${imdbCode}`,
         `https://multiembed.mov/directstream.php?video_id=${imdbCode}&tmdb=1`
     ];
     
@@ -472,7 +479,11 @@ function showStreamingError(title, imdbCode) {
                 <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
             </svg>
             <h4 style="margin-bottom: 15px;">Video Currently Unavailable</h4>
+            <p style="color: #ccc; margin-bottom: 20px;">2Embed and backup services are temporarily unavailable</p>
             <div class="error-links">
+                <a href="https://www.2embed.to/embed/imdb/movie?id=${imdbCode}" target="_blank" class="error-link" style="background: #28a745;">
+                    🎬 Try 2Embed Direct (New Tab)
+                </a>
                 <a href="https://vidsrc.to/embed/movie/${imdbCode}" target="_blank" class="error-link" style="background: #007bff;">
                     🎬 Try VidSrc (New Tab)
                 </a>
